@@ -1,21 +1,20 @@
-// @ts-check
-const { defineConfig, devices } = require('@playwright/test')
+import path from 'node:path'
+import { defineConfig, devices } from '@playwright/test'
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config()
+// Get enviornment from .env file.
+import 'dotenv/config'
 
 /**
- * @see https://playwright.dev/docs/test-configuration
+ * See https://playwright.dev/docs/test-configuration.
  */
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './tests',
-
-  /* */
-  globalSetup: require.resolve('./global.setup.js'),
-
+  /* do whatever before each test */
+  globalSetup: path.dirname(__filename) + '/global.setup.js',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -52,11 +51,4 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 })
