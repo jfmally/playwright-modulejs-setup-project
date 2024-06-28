@@ -1,16 +1,15 @@
 {
-  "name": "demo-playwright-js",
+  "name": "playwright-js-sdk-globalsetup",
   "version": "1.0.0",
   "scripts": {
-    "test": "playwright test",
-    "ev": "node evinced"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Demonstrates Evinced SDK usage with authorization in globalSetup",
   "devDependencies": {
-    "@evinced/js-playwright-sdk": "file:../../SDK/js-playwright-sdk-2.17.0.tgz",
+    "@evinced/js-playwright-sdk": "file:sdk/js-playwright-sdk-2.17.0.tgz",
     "@playwright/test": "^1.45.0",
     "@types/node": "^20.14.9",
     "dotenv": "^16.4.5"

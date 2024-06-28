@@ -1,11 +1,11 @@
-const { existsSync } = require('node:fs')
-const { test, expect } = require('@playwright/test')
-const { EvincedSDK } = require('@evinced/js-playwright-sdk')
+import { existsSync } from 'node:fs'
+import { test, expect } from '@playwright/test'
+import sdk from '@evinced/js-playwright-sdk'
 
 test.describe('Evinced Demo Page', () => {
   test('Continuous Test', async ({ page }) => {
     const evReport = './test-results/continuous.html'
-    const evincedService = new EvincedSDK(page)
+    const evincedService = new sdk.EvincedSDK(page)
     await evincedService.evStart()
 
     await page.goto('https://demo.evinced.com/')
