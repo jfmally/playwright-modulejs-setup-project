@@ -1,4 +1,4 @@
-import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { defineConfig, devices } from '@playwright/test'
 
 /**
@@ -13,8 +13,8 @@ import 'dotenv/config'
  */
 export default defineConfig({
   testDir: './tests',
-  /* do whatever before each test */
-  globalSetup: path.dirname(__filename) + '/global.setup.js',
+  /* Get Evinced SDK token in globalSetup phase */
+  globalSetup: pathToFileURL('./global.setup.js').pathname,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
