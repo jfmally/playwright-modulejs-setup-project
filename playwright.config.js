@@ -1,5 +1,4 @@
 // @ts-check
-import { pathToFileURL } from 'node:url'
 import { defineConfig, devices } from '@playwright/test'
 
 /**
@@ -14,8 +13,6 @@ import 'dotenv/config'
  */
 export default defineConfig({
   testDir: './tests',
-  /* Get absolute pathname to global setup module */
-  globalSetup: pathToFileURL('./global.setup.mjs').pathname,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -38,16 +35,23 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'auth',
+      testMatch: /auth\.setup\.js/,
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['auth'],
     },
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      dependencies: ['auth'],
     },
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
+      dependencies: ['auth'],
     },
   ],
 

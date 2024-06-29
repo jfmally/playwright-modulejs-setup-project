@@ -1,13 +1,14 @@
 {
-  "name": "playwright-mjs-globalsetup",
+  "name": "playwright-modulejs-setup-project",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "start": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Playwright JS using ECMAScript modules with Evinced SDK auth in globalSetup",
+  "description": "Playwright JS using ECMAScript modules with Evinced SDK auth in a setup project",
   "devDependencies": {
     "@evinced/js-playwright-sdk": "file:sdk/js-playwright-sdk-2.17.0.tgz",
     "@playwright/test": "^1.45.0",

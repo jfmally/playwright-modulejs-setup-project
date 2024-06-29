@@ -1,22 +1,26 @@
-# Evinced Playwright JS SDK Example — ESM with globalSetup auth
+# Evinced Playwright JS SDK Example — ESM with auth in test project
 
-Illustrates SDK usage with ECMAScript modules and globalSetup SDK authorization.
+This example illustrates Evinced Playwright JS SDK usage in a ECMAScript
+(JavaScript) module context with authorization in a setup test project.
 
 ## Using ECMAScript modules with Playwright JS
 
 Playwright JS loads files as ECMAScript modules if the file extension is `.mjs`
 or if package.json has `"type": "module"` set, otherwise `.js` files are loaded
 as CommonJS modules. (Files with extension `.cjs` are always loaded as CommonJS
-modules. A common source of confusion is the following statement:
+modules.) In this example, package.json sets `"type": "module"`.
 
-```
-import { aName } from 'some-module';
-```
-
-In CommonJS context, `{ aName }` is interpreted as object destructuing, while in
-ECMAScript context, it is not — `aName` must be an explicitly named export in
-`some-module`. For reliable loading of JavaScript modules, use the `.mjs`
-extension or set type `module` in package.json.
+> **Note:** A common source of confusion is the following statement:
+>
+> ```
+> import { aName } from 'some-module';
+> ```
+>
+> In CommonJS context, `{ aName }` is interpreted as object destructuing, but it
+> is not in ECMAScript context — `aName` must be an explicitly named export in
+> `some-module`. For reliable loading of ECMAScript modules, use the `.mjs`
+> extension or set `"type": "module"` in package.json. This example does the
+> latter.
 
 ## Authorization
 
@@ -66,6 +70,8 @@ Successful execution should echo the following:
 ```shell
 > playwright test
 
+Running 7 tests using 5 workers
+[auth] › auth.setup.mjs:4:1 › Authorize Evinced SDK
 Evinced SDK is authorized.
 
 Running 7 tests using 5 workers
