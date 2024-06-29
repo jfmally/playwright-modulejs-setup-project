@@ -1,7 +1,22 @@
-# Using Evinced SDK with Playwright JS — globalSetup SDK authorization
+# Evinced Playwright JS SDK Example — ESM with globalSetup auth
 
-Demonstrates a Playwright JS example for testing with Evinced SDK using
-Playwright globalSetup configuration for SDK authorization.
+Illustrates SDK usage with ECMAScript modules and globalSetup SDK authorization.
+
+## Using ECMAScript modules with Playwright JS
+
+Playwright JS loads files as ECMAScript modules if the file extension is `.mjs`
+or if package.json has `"type": "module"` set, otherwise `.js` files are loaded
+as CommonJS modules. (Files with extension `.cjs` are always loaded as CommonJS
+modules. A common source of confusion is the following statement:
+
+```
+import { aName } from 'some-module';
+```
+
+In CommonJS context, `{ aName }` is interpreted as object destructuing, while in
+ECMAScript context, it is not — `aName` must be an explicitly named export in
+`some-module`. For reliable loading of JavaScript modules, use the `.mjs`
+extension or set type `module` in package.json.
 
 ## Authorization
 
@@ -15,20 +30,6 @@ running tests.
 EVINCED_SERVICE_ID
 EVINCED_API_KEY
 ```
-
-The example uses the ECMAScript module format, which is supported and stable in
-Node.js versions 14 and later.
-
-This example requires access and authorization for Evinced Playwright JS SDK. If
-not already available, visit [ to get started. Ensure that you have:
-
-- A path to a local installation of the Evinced Playwright JS SDK,
-  `js-playwright-sdk-{version}.tgz`.
-- The Evinced SDK authorization keys available in
-  [Evinced Product Hub - Web SDK](https://hub.evinced.com/web-sdk) should be set
-  in your enviornment or in a .env file in the project directory.
-  - `EVINCED_SERVICE_ID`
-  - `EVINCED_API_KEY`
 
 ## Installation
 
@@ -65,6 +66,8 @@ Successful execution should echo the following:
 ```shell
 > playwright test
 
+Evinced SDK is authorized.
+
 Running 7 tests using 5 workers
   7 passed (7.0s)
 
@@ -73,8 +76,7 @@ To open last HTML report run:
   npx playwright show-report
 ```
 
-The tests will generate Evinced accessibility reports in HTML format for each
-test:
+Evinced accessibility reports in HTML format should be generated for each test:
 
 - `./test-results/single.html`
 - `./test-results/continuous.html`

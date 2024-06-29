@@ -7,7 +7,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Example of Evinced SDK use in Playwright JS using ECMAScript modules with SDK auth in globalSetup",
+  "description": "Playwright JS using ECMAScript modules with Evinced SDK auth in globalSetup",
   "devDependencies": {
     "@evinced/js-playwright-sdk": "file:sdk/js-playwright-sdk-2.17.0.tgz",
     "@playwright/test": "^1.45.0",
